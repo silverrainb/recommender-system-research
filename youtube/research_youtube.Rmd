@@ -1,0 +1,101 @@
+---
+output: html_document
+---
+<style>
+p.comment {
+background-color: #DBDBDB;
+padding: 10px;
+border: 1px solid black;
+margin-left: 25px;
+border-radius: 5px;
+font-style: italic;
+}
+</style>
+
+<div class='alert alert-info'>
+<h2 class='display-3 text-uppercase'>Recommender System Research - Youtube</h2>
+
+#### Recommender System
+##### CUNY MSDS DATA 643
+
+### Rose Koh
+##### 2018/06/12
+<div class='clearfix'></div>
+</div>
+
+<div class='page-header text-uppercase'>
+  <h4>Recommender System Research Discussion</h4>
+</div>
+
+<div class = 'well'>
+
+Now that we have covered basic techniques for recommender systems, choose one commercial recommender and describe how you think it works (content-based, collaborative filtering, etc). Does the technique deliver a good experience or are the recommendations off-target?
+
+You may also choose one of the three non-personalized recommenders (below) we went over in class and describe the technique and which of the three you prefer to use.
+
+1. Metacritic:  http://www.metacritic.com/about-metascores
+2. Rotten Tomatoes:https://www.rottentomatoes.com/about/
+3. IMDB Rating:  http://imdb.to/ 2ljPH90
+
+Please complete the research discussion assignment in a Jupyter or R Markdown notebook. You should post the GitHub link to your research in a new discussion thread.
+
+Attacks on Recommender System
+
+Read the article below and consider how to handle attacks on recommender systems. 
+
+Can you think of a similar example where a collective effort to alter the workings of content recommendations have been successful? How would you design a system to prevent this kind of abuse?
+
+https://www.washingtonpost.com/news/morning-mix/wp/2017/04/19/wisdom-of-the-crowd-imdb-users-gang-up-on-the-promise-before-it-even-opens/?utm_term=.329a75ece088
+
+Please make your post before our meetup on Thursday June 14, and respond to at least one other student's posts by our meetup on Tuesday June 19.
+
+</div>
+
+#### How does Youtube Recommender System works?
+
+<p>[Recommendations on Youtube](https://www.youtube.com/watch?v=nYMBHwf4owY)</p>
+
+<div class="alert alert-success" role="alert">
+
+The YouTube online video community uses RS to create personalized recommendations so users can quickly and easily find videos that are relevant to their interests. Because of the value of keeping users engages, YouTube strives to keep the recommendations updated on a regular basis, to reflect each user’s activity on the site and to simultaneously highlight the wide range of available content.
+
+
+The Recommender system is driven by the Google Brain deep learning artificial intelligence project and is comprised of two neural networks. The first collects and collates information on users’ watch history and uses collaborative filtering to select hundreds of videos. This process, known as candidate generation, uses feedback from users to train the model. The second neural network ranks the selected videos in order to make recommendations to users.
+
+
+According to YouTube after implementation of the Recommender system for more than a year, it has been successful in terms of their stated goals, with recommendations accounting for around 60 per cent of video clicks from the homepage.
+
+</div>
+
+#### Attacks on Recommender System
+
+<div class="alert alert-success" role="alert">
+
+My approach to handle the attacks on recommender system is firstly to detect the anomaly pattern. Surely the logs contain frequency, timestamp, location of each data points.
+
+The recommender system should also make sure the user's input is verified -- in that, we could divide reviews from the user who experienced the reviewing object, or who claims to have experienced them. While displaying the reviews of those who claims to have, we can choose to employ just the verified users information for the system.
+
+For example, in imdb, the date of release of the movies in each countries are available. By detecting where users come from, imdb can filter at least trust-worthy information to reflect on their display.
+
+For commerce websites, we would gladly take users' opinion of their experience whether they have placed order directly or not, but we would only account for members who purchased the item in the platform.
+
+
+</div>
+
+
+
+#### References
+https://ai.google/research/pubs/pub45530
+http://trouvus.com/how-does-the-youtube-recommendation-system-work/
+https://www.infoq.com/news/2016/09/How-YouTube-Recommendation-Works
+http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45530.pdf
+
+https://www.math.uci.edu/icamp/courses/math77b/lecture_12w/pdfs/Chapter%2009%20-%20Attacks%20on%20collaborative%20recommender%20systems.pdf
+https://pdfs.semanticscholar.org/presentation/4fb7/6de5d7622ac225bf3aa26419d0983c8d8e4b.pdf
+http://cs.dartmouth.edu/~ac/Pubs/kdd06-attack.pdf
+https://link.springer.com/article/10.1007%2Fs11390-013-1362-0
+https://www.sciencedirect.com/science/article/pii/S2212017313006063
+http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.329.4891&rep=rep1&type=pdf
+https://arxiv.org/pdf/1506.05752.pdf
+https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/34404.pdf
+http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0130968#sec005
