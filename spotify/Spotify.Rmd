@@ -1,0 +1,119 @@
+---
+output: html_document
+---
+<style>
+p.comment {
+background-color: #DBDBDB;
+padding: 10px;
+border: 1px solid black;
+margin-left: 25px;
+border-radius: 5px;
+font-style: italic;
+}
+</style>
+
+<div class='alert alert-info'>
+<h2 class='display-3 text-uppercase'>Recommender System Research - Spotify Recommender system</h2>
+
+#### Recommender System
+##### CUNY MSDS DATA 643
+
+### Rose Koh
+##### 2018/06/20
+<div class='clearfix'></div>
+</div>
+
+<div class='page-header text-uppercase'>
+  <h4>Recommender System Research Discussion 2</h4>
+</div>
+
+<div class = 'well'>
+
+This week we are watching the Chris Johnson's Spotify recommender system youtue clip to find important or interseting points to discuss. This clip consists of the mathematical techniques covered in this unit's reading and some of the data management challenges in an industrial-scale recommendation system.
+
+</div>
+
+<p>[Spotify](https://www.youtube.com/watch?time_continue=1&v=3LBgiFch4_g)</p>
+
+#### Discussion points
+
+<div class="alert alert-success" role="alert">
+
+
+	• Explicit Matrix factorization
+	• Implicit Matrix factorization - based on what they are listening to
+	• Alternating least squares
+	• Scaling up implicit matrix factorization with Hadoop
+	• Hadoop - I/O bottleneck
+	• Scaling up implicit matrix factorization with spark
+		○ Broadcast everything
+		○ Full gridify method
+		○ Half gridify
+	• Random Learning
+		○ PairRDD
+		○ Kryo Serialization
+
+</div>
+
+
+#### Matrix Factorization
+
+<div class="alert alert-success" role="alert">
+
+Matrix factorization (MF) factors a sparse rating matrix R (m x n, with non-zero elements) into a m x f and a f x n matrices, as shown below.
+
+![](./mf.png)
+
+Matrix factorization (MF) is at the core of many popular algorithms, e.g., collaborative filtering, word embedding, and topic model. GPU (graphics processing units) with massive cores and high intra-chip memory bandwidth sheds light on accelerating MF much further when appropriately exploiting its architectural characteristics.
+
+</div>
+
+
+
+#### ALS
+
+<div class="alert alert-success" role="alert">
+
+When using a Matrix Factorization approach to implement a recommendation algorithm, we decompose  large user/item matrix into lower dimensional user factors and item factors. In the most simple approach we can then estimate the user rating (or in general preference) by multiplying those factors. In order to learn those factors we need to minimize the following quadratic loss function.
+
+In an SGD approach, for each example in the dataset we compute the error and then update the parameters by a factor in the opposite direction of the gradient.
+
+Alternating Least Squares (ALS) represents a different approach to optimizing the loss function. The key insight is that we can turn the non-convex optimization problem into an "easy" quadratic problem if we fix either Pu or Qi. ALS fixes each one of those alternatively. When one is fixed, the other one is computed, and vice versa.
+
+There are two main benefits of this approach. 
+
+* First, this is very easy to parallelize. 
+* Second, whenever dealing with implicit datasets, which are usually not sparse, SGD is not practical (users times items can easily be in the order of billions). 
+
+ALS is a much more efficient optimization technique in these cases.
+
+
+</div>
+
+#### Spark Overview
+
+<div class="alert alert-success" role="alert">
+
+At a high level, every Spark application consists of a driver program that runs the user’s main function and executes various parallel operations on a cluster. The main abstraction Spark provides is a resilient distributed dataset (RDD), which is a collection of elements partitioned across the nodes of the cluster that can be operated on in parallel. RDDs are created by starting with a file in the Hadoop file system (or any other Hadoop-supported file system), or an existing Scala collection in the driver program, and transforming it. Users may also ask Spark to persist an RDD in memory, allowing it to be reused efficiently across parallel operations. Finally, RDDs automatically recover from node failures.
+
+A second abstraction in Spark is shared variables that can be used in parallel operations. By default, when Spark runs a function in parallel as a set of tasks on different nodes, it ships a copy of each variable used in the function to each task. Sometimes, a variable needs to be shared across tasks, or between tasks and the driver program. Spark supports two types of shared variables: broadcast variables, which can be used to cache a value in memory on all nodes, and accumulators, which are variables that are only “added” to, such as counters and sums.
+
+
+</div>
+
+#### Resilient distributed datasets
+
+<div class="alert alert-success" role="alert">
+
+Spark revolves around the concept of a resilient distributed dataset (RDD), which is a fault-tolerant collection of elements that can be operated on in parallel. There are two ways to create RDDs: parallelizing an existing collection in your driver program, or referencing a dataset in an external storage system, such as a shared filesystem, HDFS, HBase, or any data source offering a Hadoop InputFormat.
+
+</div>
+
+
+#### References
+<p>[Music Recommendations at Scale with Spark - Christopher Johnson(Spotify)](https://www.youtube.com/watch?time_continue=1&v=3LBgiFch4_g)</p>
+
+<p>[Alternating Least Squares Method for Collaborative Filtering](https://bugra.github.io/work/notes/2014-04-19/alternating-least-squares-method-for-collaborative-filtering/)</p>
+
+<p>[Spark RDD Programming Guide](https://spark.apache.org/docs/latest/rdd-programming-guide.html#resilient-distributed-datasets-rdds)</p>
+
