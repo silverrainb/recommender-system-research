@@ -49,7 +49,7 @@ Please make your post before our meetup on Thursday June 28, and respond to at l
 
 </div>
 
-#### How does Youtube Recommender System works?
+#### A better recommendation system: prioritize ethics over profit
 
 <div class="alert alert-success" role="alert">
 
