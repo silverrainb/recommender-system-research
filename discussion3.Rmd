@@ -13,7 +13,7 @@ font-style: italic;
 </style>
 
 <div class='alert alert-info'>
-<h2 class='display-3 text-uppercase'>Recommender System Research - Youtube</h2>
+<h2 class='display-3 text-uppercase'>Recommender System Research</h2>
 
 #### Recommender System
 ##### CUNY MSDS DATA 643
