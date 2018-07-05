@@ -1,0 +1,52 @@
+---
+output: html_document
+---
+<style>
+p.comment {
+background-color: #DBDBDB;
+padding: 10px;
+border: 1px solid black;
+margin-left: 25px;
+border-radius: 5px;
+font-style: italic;
+}
+</style>
+
+<div class='alert alert-info'>
+<h2 class='display-3 text-uppercase'>Recommender System Research</h2>
+
+#### Recommender System
+##### CUNY MSDS DATA 643
+
+### Rose Koh
+##### 2018/07/05
+<div class='clearfix'></div>
+</div>
+
+<div class='page-header text-uppercase'>
+  <h4>Mitigating the Harm of Recommender Systems: How to prevent algorithmic discrimination?</h4>
+</div>
+
+
+#### Attacks on Recommender System
+
+<div class="alert alert-success" role="alert">
+
+How to prevent algorithms discriminating unfairly?  Many approaches for testing algorithms contain hidden biases aims to prevent automated systems from perpetuating human discirimination.  It is often unclear how these systems come to their conclusions, which makes it impossible to tell if they are fair ones.  For example, an algorithm might conclude that people from a certain demographic are less likely to pay back a loan,  if it is trained on a data set in which loans were unfairly distributed in the first place.
+
+At Alan Turing Institute, they have developed a framework to identify and elimintate algorithm bias.  The key lies in considering how variables interact.  By mapping out variables in a dataset and tests how they might skew decision-making process, it is possible to spot evidence of bias to remove or to compensate to prevent algorithmic discrimination.
+
+Considering all variables and working out what works for us rather than trusting the algprithm should be the base for how to mitigate the harm of recommender systems.  The big challenge we face is getting the computer to be able to explain itself to us.  It is important to work out what is fair rather than trusting algorithms for its sake.
+</div>
+
+#### References
+
+https://www.wired.com/story/creating-ethical-recommendation-engines/
+
+https://www.nytimes.com/2018/03/10/opinion/sunday/youtube-politics-radical.html 
+
+http://goldberg.berkeley.edu/pubs/sanjay-recsys-v10.pdf 
+
+http://www3.weforum.org/docs/WEF_40065_White_Paper_How_to_Prevent_Discriminatory_Outcomes_in_Machine_Learning.pdf
+
+https://www.newscientist.com/article/mg23431195-300-bias-test-to-prevent-algorithms-discriminating-unfairly/
